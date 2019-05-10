@@ -3,3 +3,9 @@
 ################################################################################
 
 /Ada.Xamarin.FileStorage.Abstractions/bin
+/.vs
+/Ada.Xamarin.FileStorage.Abstractions/obj
+/Ada.Xamarin.FileStorage.Abstractions/Properties/PublishProfiles
+*.user
+/Ada.Xamarin.FileStorage.Android/bin/Debug/netstandard2.0
+/Ada.Xamarin.FileStorage.Android/obj
