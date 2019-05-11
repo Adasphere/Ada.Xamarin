@@ -19,3 +19,9 @@ steps:
   inputs:
     command: pack
     packagesToPack: '**/*.csproj'
+
+- task: NuGetCommand@2
+  displayName: 'Authenticate nuget feed'
+  inputs:
+    command: custom
+    arguments: sources update -Name "<feed-name>" -Username "vsts" -Password "$(System.AccessToken)" -StorePasswordInClearText -ConfigFile ./NuGet.Config
