@@ -1,21 +1,111 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+pool:
 
-trigger:
-- master
+  name: Hosted VS2017
+
+  demands:
+
+  - msbuild
+
+  - visualstudio
+
+  - vstest
+
+
+
+#Your build pipeline references an undefined variable named ‘Parameters.solution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+#Your build pipeline references an undefined variable named ‘Parameters.solution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+#Your build pipeline references the ‘BuildPlatform’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘BuildPlatform’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: NuGetToolInstaller@0
+
+  displayName: 'Use NuGet 4.3.0'
+
+
 
 - task: NuGetCommand@2
+
+  displayName: 'NuGet restore'
+
   inputs:
-    command: pack
-    packagesToPack: '**/*.csproj'
+
+    restoreSolution: '$(Parameters.solution)'
+
+
+
+- task: VSBuild@1
+  displayName: 'Build solution Ada.Xamarin.sln'
+  inputs:
+    solution: '$(Parameters.solution)'
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
+
+
+- task: VSTest@2
+
+  displayName: 'VsTest - testAssemblies'
+
+  inputs:
+
+    testAssemblyVer2: |
+     **\$(BuildConfiguration)\*test*.dll
+     !**\obj\**
+
+    platform: '$(BuildPlatform)'
+
+    configuration: '$(BuildConfiguration)'
+
+
+
+- task: PublishSymbols@1
+
+  displayName: 'Publish symbols path: '
+
+  inputs:
+
+    SearchPattern: '**\bin\**\*.pdb'
+
+  continueOnError: true
+
+
+
+- task: CopyFiles@2
+
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+
+  inputs:
+
+    SourceFolder: '$(build.sourcesdirectory)'
+
+    Contents: '**\bin\$(BuildConfiguration)\**'
+
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+
+
+- task: PublishBuildArtifacts@1
+
+  displayName: 'Publish Artifact: drop'
+
+  inputs:
+
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+
+
+
