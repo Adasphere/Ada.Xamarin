@@ -11,3 +11,6 @@
 /Ada.Xamarin.FileStorage.Android/obj
 /Ada.Xamarin.FileStorage.Abstractions.Tests/bin/Debug/netcoreapp3.0
 /Ada.Xamarin.FileStorage.Abstractions.Tests/obj
+/Ada.Xamarin.FileStorage.Abstractions.Tests/bin/Debug/netcoreapp2.1
+/Ada.Xamarin.FileStorage.Abstractions.Tests/Report
+/Ada.Xamarin.FileStorage.Abstractions.Tests/coverage.cobertura.xml
