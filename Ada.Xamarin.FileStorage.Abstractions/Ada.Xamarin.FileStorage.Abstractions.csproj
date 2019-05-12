@@ -11,6 +11,11 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>Xamarin, File Storage</PackageTags>
     <Copyright>Copyright © 2019 Adasphere</Copyright>
+    <Authors>Adasphere</Authors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\repos.doug.simpson\Ada.Xamarin\Ada.Xamarin.FileStorage.Abstractions\Ada.Xamarin.FileStorage.Abstractions.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>
