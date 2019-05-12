@@ -6,6 +6,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Version>1.0.2.0</Version>
+    <RepositoryUrl>https://github.com/Adasphere/Ada.Xamarin</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>Xamarin, File Storage</PackageTags>
+    <Copyright>Copyright © 2019 Adasphere</Copyright>
   </PropertyGroup>
 
 </Project>
