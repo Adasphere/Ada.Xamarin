@@ -5,6 +5,11 @@ namespace Ada.Xamarin.FileStorage.Abstractions
 {
     public static class Extensions
     {
+        /// <summary>
+        /// Cleans from a byte array a byte order mark if it exists
+        /// </summary>
+        /// <param name="bytes">The original byte array</param>
+        /// <returns>A byte array without a byte order mark if it exists</returns>
         public static byte[] CleanByteOrderMark(this byte[] bytes)
         {
             byte[] bom = new byte[] { 0xEF, 0xBB, 0xBF };
