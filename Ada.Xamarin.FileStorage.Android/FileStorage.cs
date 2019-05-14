@@ -1,5 +1,5 @@
-﻿using Ada.Xamarin.FileStorage.Abstractions;
-using System.IO;
+﻿using System.IO;
+using Ada.Xamarin.FileStorage.Abstractions;
 using Android.App;
 using Android.Content;
 using Newtonsoft.Json;
@@ -36,6 +36,11 @@ namespace Ada.Xamarin.FileStorage.Android
             T data = JsonConvert.DeserializeObject<T>(content);
 
             return data;
+        }
+
+        public void Write(string fileName, string content)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
